@@ -1,7 +1,10 @@
+import Form from "./components/Form";
+
 function App() {
   return (
-    <main className="">
-      <p>test</p>
+    <main>
+      <h1 className="sr-only">Contact Form</h1>
+      <Form />
     </main>
   );
 }
