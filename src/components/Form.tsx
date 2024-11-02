@@ -98,7 +98,7 @@ function Form() {
             <input
               type="text"
               id="firstName"
-              autoComplete="firstName"
+              autoComplete="given-name"
               required={true}
               {...register("firstName", {
                 required: {
