@@ -106,7 +106,7 @@ function Form() {
                 },
               })}
               aria-invalid={errors.firstName ? "true" : "false"}
-              className={`hover:border-hover hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all focus:border-focus focus:outline-none ${errors.firstName ? "border-error" : "border-neutral"}`}
+              className={`hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all hover:border-hover focus:border-focus focus:outline-none ${errors.firstName ? "border-error" : "border-neutral"}`}
             />
             <p
               role="alert"
@@ -139,7 +139,7 @@ function Form() {
                 },
               })}
               aria-invalid={errors.lastName ? "true" : "false"}
-              className={`hover:border-hover hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all focus:border-focus focus:outline-none ${errors.lastName ? "border-error" : "border-neutral"}`}
+              className={`hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all hover:border-hover focus:border-focus focus:outline-none ${errors.lastName ? "border-error" : "border-neutral"}`}
             />
             <p
               role="alert"
@@ -177,7 +177,7 @@ function Form() {
                 },
               })}
               aria-invalid={errors.email ? "true" : "false"}
-              className={`hover:border-hover hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all focus:border-focus focus:outline-none ${errors.email ? "border-error" : "border-neutral"}`}
+              className={`hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all hover:border-hover focus:border-focus focus:outline-none ${errors.email ? "border-error" : "border-neutral"}`}
             />
             <p
               role="alert"
@@ -202,14 +202,12 @@ function Form() {
 
               <label
                 htmlFor="generalEnquiry"
-                className={`hover:border-hover relative mt-4 flex w-full cursor-pointer items-center rounded-lg border px-6 py-2 transition-all hover:shadow peer-checked:bg-blue-100 ${selectedQueryType === "general_enquiry" ? "bg-selected" : ""} ${errors.queryType ? "border-error" : "border-neutral"}`}
+                className={`relative mt-4 flex w-full cursor-pointer items-center rounded-lg border px-6 py-2 transition-all hover:border-hover hover:shadow peer-checked:bg-blue-100 ${selectedQueryType === "general_enquiry" ? "bg-selected" : ""} ${errors.queryType ? "border-error" : "border-neutral"}`}
               >
-                {" "}
                 <input
                   type="radio"
                   value="general_enquiry"
                   id="generalEnquiry"
-                  autoComplete="off"
                   required={true}
                   {...register("queryType", {
                     required: {
@@ -219,8 +217,7 @@ function Form() {
                   })}
                   aria-invalid={errors.queryType ? "true" : "false"}
                   className="peer absolute h-5 w-5 opacity-0"
-                />{" "}
-                <div></div>
+                />
                 <svg
                   className="absolute opacity-100 transition-all peer-checked:opacity-0"
                   fill="currentColor"
@@ -273,20 +270,17 @@ function Form() {
 
               <label
                 htmlFor="supportRequest"
-                className={`hover:border-hover relative mt-4 flex w-full cursor-pointer items-center rounded-lg border px-6 py-2 transition-all hover:shadow peer-checked:bg-blue-100 ${selectedQueryType === "support_request" ? "bg-selected" : ""} ${errors.queryType ? "border-error" : "border-neutral"}`}
+                className={`relative mt-4 flex w-full cursor-pointer items-center rounded-lg border px-6 py-2 transition-all hover:border-hover hover:shadow peer-checked:bg-blue-100 ${selectedQueryType === "support_request" ? "bg-selected" : ""} ${errors.queryType ? "border-error" : "border-neutral"}`}
               >
-                {" "}
                 <input
                   type="radio"
                   value="support_request"
                   id="supportRequest"
-                  autoComplete="off"
                   required={true}
                   {...register("queryType", {})}
                   aria-invalid={errors.queryType ? "true" : "false"}
                   className="peer absolute h-5 w-5 opacity-0"
-                />{" "}
-                <div></div>
+                />
                 <svg
                   className="absolute opacity-100 transition-all peer-checked:opacity-0"
                   fill="currentColor"
@@ -374,7 +368,7 @@ function Form() {
               },
             })}
             aria-invalid={errors.message ? "true" : "false"}
-            className={`hover:border-hover hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all focus:border-focus focus:outline-none ${errors.message ? "border-error" : "border-neutral"}`}
+            className={`hover: mt-1 w-full cursor-pointer rounded-lg border px-6 py-2 shadow transition-all hover:border-hover focus:border-focus focus:outline-none ${errors.message ? "border-error" : "border-neutral"}`}
           />
           <p
             role="alert"
@@ -400,7 +394,7 @@ function Form() {
               })}
             />
             <div
-              className={`border-checkbox peer-hover:border-hover absolute left-1 top-5 h-[18px] w-[18px] rounded-sm border-2 transition-all peer-checked:opacity-0 ${errors.consent ? "border-error" : ""} md:left-0 md:top-2`}
+              className={`border-checkbox absolute left-1 top-5 h-[18px] w-[18px] rounded-sm border-2 transition-all peer-checked:opacity-0 peer-hover:border-hover ${errors.consent ? "border-error" : ""} md:left-0 md:top-2`}
             ></div>
             <svg
               className="absolute left-1 top-5 opacity-0 transition-all peer-checked:opacity-100 md:left-0 md:top-2"
@@ -443,7 +437,7 @@ function Form() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-submit text-submit hover:bg-hover active:bg-active relative w-full rounded-lg py-4 text-lg font-bold tracking-wide transition-all hover:shadow disabled:bg-red-300"
+          className="relative w-full rounded-lg bg-submit py-4 text-lg font-bold tracking-wide text-submit transition-all hover:bg-hover hover:shadow active:bg-active disabled:bg-red-300"
         >
           {!isSubmitting && "Submit"}
           {isSubmitting && (
@@ -471,7 +465,9 @@ function Form() {
             </svg>
           )}
         </button>
-        {process.env.NODE_ENV === 'development' && <DevTool control={control} />}
+        {process.env.NODE_ENV === "development" && (
+          <DevTool control={control} />
+        )}
       </form>
     </>
   );
