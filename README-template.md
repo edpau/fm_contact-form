@@ -14,9 +14,8 @@ This is a solution to the [Contact form challenge on Frontend Mentor](https://ww
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+
 
 ## Overview
 
@@ -35,20 +34,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+<img src="./src/assets/images/screenshot.png" alt="Screenshot" width="300"/>
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://github.com/edpau/fm_contact-form)
+- [Live Site URL](https://edpau.github.io/fm_contact-form/)
 
 ## My process
 
@@ -56,24 +48,23 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 - Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
 - CSS Grid
 - Mobile-first workflow
+- Tailwind CSS
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- React Hook Form
 
 
 ### What I learned
 
 #### Tailwind peer
 
-#### What I want to do
+##### What I want to do
 - I am trying to use SVG to replace the default radio button to give my webpage a consistent look across different browser. 
 - I want the SVG outer circle to grey out when it is not clicked
 - when the radio button is clicked (in my case, it is the label, I wrapped the label around the radio button), then colored when it is clicked
 
-#### SVG I used
+##### SVG I used
 - This SVG has separate into parts for better control
 ```js
 <svg
@@ -99,7 +90,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
               </svg>
 ```
 
-#### What I read and try
+##### What I read and try
 - I read [Inclusively Hiding & Styling Checkboxes and Radio Buttons](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/) and learn to use opacity 0 over visibility for better accessibility.
   - using opacity 0 over sr-only can improve accessibility for users navigating by touch
   - Both display: none and visibility: hidden remove the element they hide from the DOM and accessibility tree
@@ -134,7 +125,7 @@ Radio Button with SVG](https://codepen.io/kilgarenone/pen/LBXezO)
     <div class=" peer-checked:text-sky-600 peer-checked:ring-blue-400 peer-checked:ring-offset-2">
     ```
 
-#### Problem I have
+##### Problem I have
 - I cannot control individual parts of the SVG using Tailwind
 - The peer-checked class will not work in my case because the <circle> element is not a direct sibling of the input element.
 - In Tailwind CSS, I cannot directly target sibling elements with complex selectors like input:checked + svg .radioDot because Tailwind CSS is a utility-first CSS framework that generates utility classes for individual elements. 
@@ -148,7 +139,7 @@ Radio Button with SVG](https://codepen.io/kilgarenone/pen/LBXezO)
     }
   ```
 
-#### How I solve it
+##### How I solve it
 
 - I used a similar approach as [https://marek-rozmus.medium.com/styling-checkbox-with-tailwind-46a92c157e2d](https://marek-rozmus.medium.com/styling-checkbox-with-tailwind-46a92c157e2d)
 - I put two SVG on top of each other and change their opacity.
@@ -192,7 +183,7 @@ Radio Button with SVG](https://codepen.io/kilgarenone/pen/LBXezO)
 2. focus:outline-none
 3. focus:border-indigo-500
 
-### Change the input border color to red when the input is invalid
+#### Change the input border color to red when the input is invalid
 - To change the input border color to red when the input is invalid using react-hook-form and Tailwind CSS, I conditionally apply Tailwind utility classes based on the presence of validation errors.
 
 ```js
@@ -201,7 +192,7 @@ Radio Button with SVG](https://codepen.io/kilgarenone/pen/LBXezO)
           />
   ```
 
-### Avoid layout shifts when display error
+#### Avoid layout shifts when display error
 
 - preventing layout shifts by reserving the necessary space
 - Method 1
@@ -214,14 +205,14 @@ Radio Button with SVG](https://codepen.io/kilgarenone/pen/LBXezO)
 <p role="alert" className={`text-error ${errors.firstName ? "visible" : "invisible"}`}>{errors.firstName ? errors.firstName?.message : "no error"}</p>
 ```
 
-### [The animationend event](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event) 
+#### [The animationend event](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event) 
 - The animationend event is fired when a CSS Animation has completed.
 - I used to set the SuccessPopup state to false after the animation end, rather than using setTimeout. 
 - onAnimationEnd Callback: I added the onAnimationEnd prop to SuccessPopup, which triggers setShowSuccess(false) only after the animation completes. This removes the need for a setTimeout and makes timing adjustments easier.
 - CSS-Only Animation Management: The animation manages the entire lifecycle of the popup (show, hold, and fade-out). Now, changing the animation duration or style in CSS won’t require adjusting JavaScript timing.
 - This approach is more maintainable and reduces re-rendering since the parent component doesn’t rely on setTimeout for toggling showSuccess, improving the user experience and performance.
 
-#### setTimeout 
+##### setTimeout 
 ```js
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
@@ -230,7 +221,7 @@ Radio Button with SVG](https://codepen.io/kilgarenone/pen/LBXezO)
   };
 ```
 
-#### animationend
+##### animationend
 
 - SuccessPopup Component
 
@@ -272,6 +263,8 @@ function Form() {
   //  ...
 )}
 ```
+
+#### input attribute- autoComplete
 
 ### Continued development
 
@@ -327,17 +320,10 @@ function Form() {
 - [HTML attribute: autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) - provide automated assistance in filling out form field values i.e. `autoComplete="given-name"`
 - [Accessibility good form example](https://www.accessibility-developer-guide.com/examples/forms/good-example/_examples/generally-good-form/)
 
-
 #### Material Tailwind
 - [Tailwind CSS Checkbox](https://www.material-tailwind.com/docs/html/checkbox)
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-
-
-## Look into 
-- input attribute- autoComplete
+- Website - [Edward Pau](https://www.edpau.me)
+- Frontend Mentor - [@edpau](https://www.frontendmentor.io/profile/edpau)
